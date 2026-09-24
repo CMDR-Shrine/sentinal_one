@@ -14,14 +14,15 @@ def main():
         model="kev-latest",
     )
 
-    answer_dict = question_chain(client,state,time).answers
+    response = question_chain(client,state,time)
 
-    print(type(answer_dict["is_solicitation"]))
-    print(answer_dict["is_solicitation"])
+    print(type(response.answers["is_solicitation"]))
+    print(response.answers["is_solicitation"])
 
 
     # i cant figure out how to access the value, rn its just type 'Answer', not sure how to interface with that
-    answer_dict["is_solicitation"] > 0.1
+    if response.answers["is_solicitation"].noul >= 0.1:
+        print("yeet")
 
 
 def question_chain(client,state,time):
