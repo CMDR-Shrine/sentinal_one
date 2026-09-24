@@ -17,8 +17,13 @@ def main():
 
     print(type(response.answers["is_solicitation"]))
     print(response.answers["is_solicitation"])
+    print(response.answers["not_valid_email_domain"])
 
-    YES_THRESH = 0.1
+
+    YES_THRESH = 0.80
+    is_name_enumerated_ans = response.answers["is_name_enumerated"].noul 
+    not_valid_email_domain = response.answers["not_valid_email_domain"].noul 
+    is_temporal_mismatch  = response.answers["is_temporal_mismatch"].noul
 
     if response.answers["is_not_dutch/english"].noul > YES_THRESH:
         print("NON NATIVE LANG DETECTED")
@@ -32,8 +37,15 @@ def main():
     if response.answers["is_solicitation"].noul > YES_THRESH:
         print("SOLICITATION DETECTED")
 
-    if response.answers["is_name_enumerated"].noul > YES_THRESH:
-        print("NAME ENUMERATION DETECTED")
+    if is_name_enumerated_ans > YES_THRESH:
+        print(f"NAME ENUMERATION DETECTED")
+
+    if not_valid_email_domain > YES_THRESH:
+        print(f"EMAIL DOMAIN MISMATCH DETECTED")
+
+    if is_temporal_mismatch > YES_THRESH:
+        print(f"EMAIL DOMAIN MISMATCH DETECTED")
+    
 
 
 

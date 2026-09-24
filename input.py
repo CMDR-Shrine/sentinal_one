@@ -3,6 +3,7 @@ from zoneinfo import ZoneInfo
 
 state = r"""
 
+FROM: WellsOnline@servermail.com
 Scheduled Payment Notification
 
  Dear personal,
@@ -11,6 +12,7 @@ Scheduled Payment Notification
 
  Thank You for choosing Wells Fargo 
 
+# attachments: 'forwardedmessage.eml': 10kb 'images.txt' : 6kb
  """
 
 def iso_zone_date_time():

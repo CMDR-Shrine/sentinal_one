@@ -16,19 +16,26 @@ def question_chain(client,state,time):
                             }
                         ),
                     "contains_weird_attachments": Noul(
-                        instructions = "does the email contain zip files"
+                        instructions = "do the email attachments seem strange, eg file size,naming scheme vs file type"
                         ),
                     "is_payment": Noul(
-                        instructions = f"does this email ask user to make a payment?",
-                        criteria = {
-                            "true": "email is asking user for money",
-                            "false": "email makes no reference to user needing to pay money",
-                            }
+                        instructions = f"Does the email reference payments",
                         ),
 
                     "is_name_enumerated": Noul(
                         instructions = "does this email refer to the recipient as 'personal' eg Dear personal"
-                        )
+                        ),
+                    "not_valid_email_domain": Noul(
+                        instructions = "does the email domain NOT name match the company/correspondence content",
+                        criteria = {
+                            "yes" : "the email domain is being deceptive or doesnt match the contents of the email eg: 'tesco@<strangedomain>' ",
+                            "no" : "the email domain does match the contents of the and is not deceptive in its naming eg: 'support@tesco.com",
+                            }
+                        ),
+                    "is_temporal_mismatch": Noul(
+                        instructions = f"does the email time stamp not coincide the current {time}",
+                        ),
+
                     }
                 )
 
