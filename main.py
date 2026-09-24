@@ -38,7 +38,11 @@ On 2022-01-18 12:11, james@cucina-commercial.co.uk wrote:
         "spam": Noul(instructions="Is this email chain a scam?"),
         "tone": Choice(
             instructions="the general tone?",
-            criteria={"calm": None, "frustrated": None, "angry": None},
+            criteria={
+                "calm": None, 
+                "frustrated": None, 
+                "angry": None
+                },
         ),
     },
 )
