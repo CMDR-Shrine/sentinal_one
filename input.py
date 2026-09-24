@@ -1,4 +1,4 @@
-state =r"""
+state = r"""
 
         Scheduled Payment Notification
 
