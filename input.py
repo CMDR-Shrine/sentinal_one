@@ -1,11 +1,11 @@
 state =r"""
-Buen día
 
-Es un placer saludarle y solicitar su apoyo con el documento adjunto.
+        Scheduled Payment Notification
 
-Por favor, avíseme si necesita más información.
+ Dear personal,
 
-Quedo a la espera.
+ You have an outgoing scheduled payment. View Details
 
-Saludos        """
- 
+ Thank You for choosing Wells Fargo 
+
+ """
