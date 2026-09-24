@@ -1,3 +1,5 @@
+from typesafe_sdk import  Noul 
+
 def question_chain(client,state,time):
     return client.system_one(
                 state,
@@ -17,13 +19,16 @@ def question_chain(client,state,time):
                         instructions = "does the email contain zip files"
                         ),
                     "is_payment": Noul(
-
-                        instructions = f"Is this email chain a scam? Current time is: {time}",
+                        instructions = f"does this email ask user to make a payment?",
                         criteria = {
                             "true": "email is asking user for money",
-                            "false": "email makes no refrence to user needing to pay money",
+                            "false": "email makes no reference to user needing to pay money",
                             }
                         ),
+
+                    "is_name_enumerated": Noul(
+                        instructions = "does this email refer to the recipient as 'personal' eg Dear personal"
+                        )
                     }
                 )
 

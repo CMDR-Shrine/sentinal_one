@@ -1,6 +1,9 @@
+import datetime 
+from zoneinfo import ZoneInfo
+
 state = r"""
 
-        Scheduled Payment Notification
+Scheduled Payment Notification
 
  Dear personal,
 
@@ -9,3 +12,6 @@ state = r"""
  Thank You for choosing Wells Fargo 
 
  """
+
+def iso_zone_date_time():
+    return datetime.datetime.now(tz=ZoneInfo("Europe/Amsterdam")).isoformat()

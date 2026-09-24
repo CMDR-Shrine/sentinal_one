@@ -1,7 +1,5 @@
-from typesafe_sdk import Choice, Noul, TypeSafeClient
-import datetime 
-from zoneinfo import ZoneInfo
-from input import state
+from typesafe_sdk import Noul, TypeSafeClient
+from input import state, iso_zone_date_time 
 from questions import question_chain 
 
 def main():
@@ -20,15 +18,26 @@ def main():
     print(type(response.answers["is_solicitation"]))
     print(response.answers["is_solicitation"])
 
+    YES_THRESH = 0.1
 
-    # i cant figure out how to access the value, rn its just type 'Answer', not sure how to interface with that
-    if response.answers["is_solicitation"].noul >= 0.1:
-        print("yeet")
+    if response.answers["is_not_dutch/english"].noul > YES_THRESH:
+        print("NON NATIVE LANG DETECTED")
+
+    if response.answers["contains_weird_attachments"].noul > YES_THRESH:
+        print("WEIRD ATTACHMENTS DETECTED")
+
+    if response.answers["is_payment"].noul > YES_THRESH:
+        print("PAYMENT REQUEST DETECTED")
+
+    if response.answers["is_solicitation"].noul > YES_THRESH:
+        print("SOLICITATION DETECTED")
+
+    if response.answers["is_name_enumerated"].noul > YES_THRESH:
+        print("NAME ENUMERATION DETECTED")
 
 
 
-def iso_zone_date_time():
-    return datetime.datetime.now(tz=ZoneInfo("Europe/Amsterdam")).isoformat()
+
 
 
 
