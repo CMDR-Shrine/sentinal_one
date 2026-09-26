@@ -1,6 +1,7 @@
 from typesafe_sdk import Noul, TypeSafeClient
 from input import state, iso_zone_date_time 
 from questions import question_chain 
+from CONSTANTS import YES_THRESH
 
 def main():
     time = iso_zone_date_time()
@@ -20,7 +21,6 @@ def main():
     print(response.answers["not_valid_email_domain"])
 
 
-    YES_THRESH = 0.80
     is_name_enumerated_ans = response.answers["is_name_enumerated"].noul 
     not_valid_email_domain = response.answers["not_valid_email_domain"].noul 
     is_temporal_mismatch  = response.answers["is_temporal_mismatch"].noul
@@ -45,13 +45,5 @@ def main():
 
     if is_temporal_mismatch > YES_THRESH:
         print(f"EMAIL DOMAIN MISMATCH DETECTED")
-    
-
-
-
-
-
-
-
 
 main()
