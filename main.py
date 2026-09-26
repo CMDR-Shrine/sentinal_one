@@ -16,10 +16,6 @@ def main():
     )
 
     response = question_chain(client,state,time)
-
-    print(type(response.answers["is_solicitation"]))
-    print(response.answers["is_solicitation"])
-    print(response.answers["not_valid_email_domain"])
     # could actually iterate through the dict instead of doing all these if statments
     # for answer in response.nouls.noul
     for answer in response.nouls:
