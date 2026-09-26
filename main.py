@@ -24,30 +24,16 @@ def main():
     is_name_enumerated_ans = response.nouls["is_name_enumerated"].noul 
     not_valid_email_domain = response.nouls["not_valid_email_domain"].noul 
     is_temporal_mismatch  = response.nouls["is_temporal_mismatch"].noul
-    is_not_dutch_english = response.nouls["is_notdutch/english"].noul
+    is_not_dutch_english = response.nouls["is_not_dutch/english"].noul
     contains_weird_attachments = response.nouls["contains_weird_attachments"].noul 
     is_payment = response.nouls["is_payment"].noul 
     is_solicitation = response.nouls["is_solicitation"].noul 
 
-    if is_not_dutch_english > YES_THRESH:
-        print("NON NATIVE LANG DETECTED")
-
-    if contains_weird_attachments > YES_THRESH:
-        print("WEIRD ATTACHMENTS DETECTED")
-
-    if is_payment > YES_THRESH:
-        print("PAYMENT REQUEST DETECTED")
-
-    if is_solicitation > YES_THRESH:
-        print("SOLICITATION DETECTED")
-
-    if is_name_enumerated_ans > YES_THRESH:
-        print(f"NAME ENUMERATION DETECTED")
-
-    if not_valid_email_domain > YES_THRESH:
-        print(f"EMAIL DOMAIN MISMATCH DETECTED")
-
-    if is_temporal_mismatch > YES_THRESH:
-        print(f"EMAIL DOMAIN MISMATCH DETECTED")
+    # could actually iterate through the dict instead of doing all these if statments
+    # for answer in response.nouls.noul
+    for answer in response.nouls:
+        score = response.nouls[answer].noul
+        if score > YES_THRESH:
+            print(f"Answer: {answer} Scored: {score} Threshold was set to: {YES_THRESH} ")
 
 main()
