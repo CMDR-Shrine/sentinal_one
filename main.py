@@ -1,12 +1,21 @@
+# email 
+from imaplib import IMAP4_SSL
+# kev
 from typesafe_sdk import Noul, TypeSafeClient
+# time handling
 from input import state, iso_zone_date_time 
+# file imports
 from questions import question_chain 
-from CONSTANTS import YES_THRESH
+from CONSTANTS import YES_THRESH, EMAIL_PWD, EMAIL_ADDR, EMAIL_DOMAIN
 
 
 def main():
     time = iso_zone_date_time()
     print(time)
+
+    with IMAP4_SSL(EMAIL_DOMAIN) as M:
+        M.login(EMAIL_ADDR, EMAIL_PWD)
+        M.noop()
 
     client = TypeSafeClient(
         api_key="local",
