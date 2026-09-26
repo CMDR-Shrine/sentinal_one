@@ -3,6 +3,7 @@ from input import state, iso_zone_date_time
 from questions import question_chain 
 from CONSTANTS import YES_THRESH
 
+
 def main():
     time = iso_zone_date_time()
     print(time)
@@ -20,21 +21,24 @@ def main():
     print(response.answers["is_solicitation"])
     print(response.answers["not_valid_email_domain"])
 
+    is_name_enumerated_ans = response.nouls["is_name_enumerated"].noul 
+    not_valid_email_domain = response.nouls["not_valid_email_domain"].noul 
+    is_temporal_mismatch  = response.nouls["is_temporal_mismatch"].noul
+    is_not_dutch_english = response.nouls["is_notdutch/english"].noul
+    contains_weird_attachments = response.nouls["contains_weird_attachments"].noul 
+    is_payment = response.nouls["is_payment"].noul 
+    is_solicitation = response.nouls["is_solicitation"].noul 
 
-    is_name_enumerated_ans = response.answers["is_name_enumerated"].noul 
-    not_valid_email_domain = response.answers["not_valid_email_domain"].noul 
-    is_temporal_mismatch  = response.answers["is_temporal_mismatch"].noul
-
-    if response.answers["is_not_dutch/english"].noul > YES_THRESH:
+    if is_not_dutch_english > YES_THRESH:
         print("NON NATIVE LANG DETECTED")
 
-    if response.answers["contains_weird_attachments"].noul > YES_THRESH:
+    if contains_weird_attachments > YES_THRESH:
         print("WEIRD ATTACHMENTS DETECTED")
 
-    if response.answers["is_payment"].noul > YES_THRESH:
+    if is_payment > YES_THRESH:
         print("PAYMENT REQUEST DETECTED")
 
-    if response.answers["is_solicitation"].noul > YES_THRESH:
+    if is_solicitation > YES_THRESH:
         print("SOLICITATION DETECTED")
 
     if is_name_enumerated_ans > YES_THRESH:
