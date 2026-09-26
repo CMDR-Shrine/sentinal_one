@@ -6,7 +6,7 @@ from typesafe_sdk import Noul, TypeSafeClient
 from input import state, iso_zone_date_time 
 # file imports
 from questions import question_chain 
-from CONSTANTS import YES_THRESH, EMAIL_PWD, EMAIL_ADDR, EMAIL_DOMAIN
+from CONSTANTS import YES_THRESH, EMAIL_PWD, EMAIL_ADDR, EMAIL_DOMAIN, EMAIL_MAX
 
 
 def main():
@@ -15,7 +15,19 @@ def main():
 
     with IMAP4_SSL(EMAIL_DOMAIN) as M:
         M.login(EMAIL_ADDR, EMAIL_PWD)
-        M.noop()
+        print(type(M.list()))
+
+        message_total_status, message_total = M.select("INBOX")
+        message_total = int(message_total[0])
+        print(f"fetch status is: {message_total_status} total number of messages is: {message_total}")
+
+        #message_body = M.fetch("0", "(RFC822)")
+        res, raw_messages = M.fetch(str(1), "(RFC822)")
+
+        
+
+        
+
 
     client = TypeSafeClient(
         api_key="local",
